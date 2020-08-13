@@ -11,7 +11,7 @@ object ConvertUtil {
      */
     @JvmStatic
     fun listToString(list: List<HttpCookie>): String {
-        val separator = ";"[0]
+        val separator = ";"
         val sb = StringBuilder()
         for (i in list.indices) {
             sb.append(list[i].name).append("=").append(list[i].value).append(separator)
@@ -48,6 +48,7 @@ object ConvertUtil {
     </HttpCookie> */
     @JvmStatic
     fun String2List(cookie: String): List<HttpCookie> {
+        if (cookie.isBlank()) return emptyList()
         val list: MutableList<HttpCookie> = ArrayList()
         val listStr = cookie.split(";".toRegex()).toTypedArray()
         for (str in listStr) {
