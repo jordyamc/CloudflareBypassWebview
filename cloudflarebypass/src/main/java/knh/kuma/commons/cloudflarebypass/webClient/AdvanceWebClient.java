@@ -46,7 +46,7 @@ public class AdvanceWebClient extends WebViewClient {
         ua = userAgent;
     }
 
-    public void initWebView(String originUrl,String url) {
+    public void initWebView(String originUrl, String url) {
         if (mListener == null) {
             throw new RuntimeException("must set listener");
         }
@@ -96,7 +96,7 @@ public class AdvanceWebClient extends WebViewClient {
         mOriginUrl = originUrl;
     }
 
-    private class CancelTask extends TimerTask{
+    private class CancelTask extends TimerTask {
 
         @Override
         public void run() {
@@ -119,10 +119,10 @@ public class AdvanceWebClient extends WebViewClient {
                 return;
             }
         }
-        if (url.contains(mUrl) && canTimeOut){
+        if (url.contains(mUrl) && canTimeOut) {
             mTimer = new Timer();
             mTimerTask = new CancelTask();
-            mTimer.schedule(mTimerTask,TIME_DELAY);
+            mTimer.schedule(mTimerTask, TIME_DELAY);
         }
     }
 
@@ -133,7 +133,7 @@ public class AdvanceWebClient extends WebViewClient {
         Log.e("webView", String.valueOf(request.getUrl()));
         if (String.valueOf(request.getUrl()).contains("captcha.com")) {
             setCanTimeOut(false);
-            if (mTimer != null){
+            if (mTimer != null) {
                 mTimer.cancel();
                 mTimerTask.cancel();
             }
@@ -141,7 +141,7 @@ public class AdvanceWebClient extends WebViewClient {
                 setShowWebView(true);
                 mListener.onCaptchaChallenge();
             }
-        } else if (String.valueOf(request.getUrl()).equals(mUrl)||
+        } else if (String.valueOf(request.getUrl()).equals(mUrl) ||
                 String.valueOf(request.getUrl()).contains(mUrl + "/?__cf_chl_jschl_tk__=")) {
             setPageVisitCount(getPageVisitCount() + 1);
             if (getPageVisitCount() > MAX_COUNT) {
@@ -154,16 +154,18 @@ public class AdvanceWebClient extends WebViewClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-        Log.e("cookie", mCookieManager.getCookie(mUrl));
-        if (mTimer != null){
+        if (mTimer != null) {
             mTimer.cancel();
             mTimerTask.cancel();
         }
-        if (mCookieManager.getCookie(mUrl).contains("cf_clearance")) {
+        String cookie = mCookieManager.getCookie(mUrl);
+        if (cookie != null)
+            Log.e("cookie", cookie);
+        if (cookie != null && cookie.contains("cf_clearance")) {
             if (!isSuccess) {
                 setSuccess(true);
                 mWebView.stopLoading();
-                mListener.onSuccess(mCookieManager.getCookie(mUrl));
+                mListener.onSuccess(cookie);
                 return true;
             }
         }
