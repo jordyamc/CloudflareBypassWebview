@@ -1,0 +1,3 @@
+rootProject.name = "Cloudflare bypass"
+include ':app'
+include ':cloudflarebypass'
