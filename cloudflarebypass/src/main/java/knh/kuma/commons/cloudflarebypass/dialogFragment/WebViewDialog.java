@@ -186,7 +186,11 @@ public class WebViewDialog extends AbsDialogFragment {
         }
 
         if (isOnBackPress){
-            mListener.onFail(Cloudflare.ERR_CANCEL,"getCookie cancel");
+            try {
+                mListener.onFail(Cloudflare.ERR_CANCEL,"getCookie cancel");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 
