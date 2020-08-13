@@ -1,10 +1,10 @@
-package knh.kuma.commons.cloudflarebypass.webClient;
+package knh.kuma.commons.cloudflarebypass;
 
 import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import knh.kuma.commons.cloudflarebypass.webClient.dialogFragment.WebViewDialog;
+import knh.kuma.commons.cloudflarebypass.dialogFragment.WebViewDialog;
 import java.lang.ref.WeakReference;
 
 public class Cloudflare {

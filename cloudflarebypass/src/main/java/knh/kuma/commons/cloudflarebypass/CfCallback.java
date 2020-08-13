@@ -1,4 +1,4 @@
-package knh.kuma.commons.cloudflarebypass.webClient;
+package knh.kuma.commons.cloudflarebypass;
 
 import java.net.HttpCookie;
 import java.util.List;

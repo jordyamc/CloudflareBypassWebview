@@ -17,8 +17,8 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import knh.kuma.commons.cloudflarebypass.webClient.CfCallback;
-import knh.kuma.commons.cloudflarebypass.webClient.Cloudflare;
+import knh.kuma.commons.cloudflarebypass.CfCallback;
+import knh.kuma.commons.cloudflarebypass.Cloudflare;
 import knh.kuma.commons.cloudflarebypass.util.CheckUtil;
 import knh.kuma.commons.cloudflarebypass.util.ConvertUtil;
 import knh.kuma.commons.cloudflarebypass.util.LogUtil;

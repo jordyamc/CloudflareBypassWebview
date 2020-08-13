@@ -13,7 +13,7 @@ import android.webkit.WebViewClient;
 
 import androidx.annotation.Nullable;
 
-import knh.kuma.commons.cloudflarebypass.webClient.util.LogUtil;
+import knh.kuma.commons.cloudflarebypass.util.LogUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.Timer;
