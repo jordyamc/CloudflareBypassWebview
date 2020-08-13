@@ -125,7 +125,7 @@ public class CheckUtil {
             newUrl = mGetMainConn.getHeaderField("Location");
         }
         closeAllConntion();
-        if (canVisit){
+        if (canVisit || newUrl == null){
             LogUtil.e("MainUrl","visit website success");
             mCheckListener.onSuccess(mCookieList);
         }else {
